@@ -14,6 +14,7 @@ class SwapiService {
 
   async getPeopleAll() {
     const res = await this.getResource(`/people/`);
+<<<<<<< HEAD
     return res.results;
   }
 
@@ -25,12 +26,16 @@ class SwapiService {
   async getStarshipAll() {
     const res = await this.getResource(`/starships/`);
     return res.results;
+=======
+    return res.results
+>>>>>>> 854d5cd5abaec8f14b4215014cd0260ddb427689
   }
 
   getPerson(id) {
     return this.getResource(`/people/${id}/`);
   }
 
+<<<<<<< HEAD
   getPlanet(id) {
     return this.getResource(`/planets/${id}`)
   }
@@ -38,6 +43,8 @@ class SwapiService {
   getStarship(id) {
     return this.getResource(`/starships/${id}`)
   }
+=======
+>>>>>>> 854d5cd5abaec8f14b4215014cd0260ddb427689
 }
 
 const swapi = new SwapiService();
@@ -46,6 +53,7 @@ swapi.getPerson(4).then(p => {
   console.log(p.name )
 })
 
+<<<<<<< HEAD
 swapi.getPlanet(6).then( p => {
   console.log(p.name)
 })
@@ -55,6 +63,8 @@ swapi.getStarshipAll().then( p => {
 })
 
 
+=======
+>>>>>>> 854d5cd5abaec8f14b4215014cd0260ddb427689
 // getResource('https://swapi.co/api/people/101010144444/').then( (body) => {
 //   console.log(body);
 // })

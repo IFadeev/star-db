@@ -14,13 +14,30 @@ class SwapiService {
 
   async getPeopleAll() {
     const res = await this.getResource(`/people/`);
-    return res.results
+    return res.results;
+  }
+
+  async getPlanetAll() {
+    const res = await this.getResource(`/planets/`);
+    return res.results;
+  }
+  
+  async getStarshipAll() {
+    const res = await this.getResource(`/starships/`);
+    return res.results;
   }
 
   getPerson(id) {
     return this.getResource(`/people/${id}/`);
   }
 
+  getPlanet(id) {
+    return this.getResource(`/planets/${id}`)
+  }
+
+  getStarship(id) {
+    return this.getResource(`/starships/${id}`)
+  }
 }
 
 const swapi = new SwapiService();
@@ -28,6 +45,15 @@ const swapi = new SwapiService();
 swapi.getPerson(4).then(p => {
   console.log(p.name )
 })
+
+swapi.getPlanet(6).then( p => {
+  console.log(p.name)
+})
+
+swapi.getStarshipAll().then( p => {
+  console.log(p)
+})
+
 
 // getResource('https://swapi.co/api/people/101010144444/').then( (body) => {
 //   console.log(body);

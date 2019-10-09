@@ -41,8 +41,8 @@
   }
 
   _extractId(item) {
-    const idRegExp = /\/([0-9]*)\/$/;
-    return item.url.match(idRegExp[1]);
+    const id = item.url.match(/\/([0-9]*)\/$/);
+    return id[1];
   }
 
   _transformPlanet(planet) {
@@ -55,4 +55,3 @@
     }
   }
 }
-

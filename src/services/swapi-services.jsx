@@ -19,7 +19,7 @@
 
   async getPlanetAll() {
     const res = await this.getResource(`/planets/`);
-    return res.results;
+    return res.results.map(this._transformPlanet);
   }
   
   async getStarshipAll() {
@@ -31,12 +31,28 @@
     return this.getResource(`/people/${id}/`);
   }
 
-  getPlanet(id) {
-    return this.getResource(`/planets/${id}`)
+  async getPlanet(id) {
+    const planet = await this.getResource(`/planets/${id}`);
+    return this._transformPlanet(planet)
   }
 
   getStarship(id) {
     return this.getResource(`/starships/${id}`)
+  }
+
+  _extractId(item) {
+    const idRegExp = /\/([0-9]*)\/$/;
+    return item.url.match(idRegExp[1]);
+  }
+
+  _transformPlanet(planet) {
+    return {
+      id: this._extractId(planet),
+      name: planet.name,
+      population: planet.population,
+      rotationPeriod: planet.rotation_period,
+      diameter: planet.diameter
+    }
   }
 }
 

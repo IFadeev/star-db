@@ -30,11 +30,11 @@ export default class RandomPlanet extends Component {
         });
       })
     }
-
+    this.updatePlanet();
   }
 
   render() {
-    this.updatePlanet();
+    
     const { id, name, population, rotationPeriod, diameter } = this.state;
     return (
       <div className="random-planet jumbotron rounded">

@@ -14,7 +14,7 @@
 
   async getPeopleAll() {
     const res = await this.getResource(`/people/`);
-    return res.results;
+    return res.results.map(this._transformPerson);;
   }
 
   async getPlanetAll() {
@@ -24,11 +24,12 @@
   
   async getStarshipAll() {
     const res = await this.getResource(`/starships/`);
-    return res.results;
+    return res.results.map(this._transformStarship);
   }
 
-  getPerson(id) {
-    return this.getResource(`/people/${id}/`);
+  async getPerson(id) {
+    const person = await this.getResource(`/people/${id}/`);
+    return this._transformPerson(person)
   }
 
   async getPlanet(id) {
@@ -36,8 +37,9 @@
     return this._transformPlanet(planet)
   }
 
-  getStarship(id) {
-    return this.getResource(`/starships/${id}`)
+  async getStarship(id) {
+    const ship = await this.getResource(`/starships/${id}`);
+    return this._transformStarship(ship);
   }
 
   _extractId(item) {
@@ -54,4 +56,30 @@
       diameter: planet.diameter
     }
   }
+
+  _transformStarship(starship) {
+    return {
+      id: this._extractId(starship),
+      name: starship.name,
+      model: starship.model,
+      manufacturer: starship.manufacturer,
+      costInCredits: starship.costInCredits,
+      length: starship.length,
+      crew: starship.crew,
+      passengers: starship.passengers,
+      cargoCapacity: starship.cargoCapacity
+    }
+  }
+
+  _transformPerson(person) {
+    return {
+      id: this._extractId(person),
+      name: person.name,
+      gender: person.gender,
+      birthYear: person.birthYear,
+      eyeColor: person.eyeColor
+    }
+  }
+
+
 }

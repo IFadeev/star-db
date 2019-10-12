@@ -5,7 +5,7 @@
   from {
     transform: rotate(0);
   }
-  to{
+  to {
     transform: rotate(359deg);
   }
 }
@@ -15,7 +15,6 @@
 * {
   box-sizing: border-box;
 }
-
 
 .spinner-box {
   width: 100%;
@@ -27,21 +26,6 @@
   background-color: transparent;
 }
 
-/* SPINNING CIRCLE */
-
-.leo-border-1 {
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  padding: 3px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  background: rgb(63,249,220);
-  background: linear-gradient(0deg, rgba(63,249,220,0.1) 33%, rgba(63,249,220,1) 100%);
-  animation: spin3D 1.8s linear 0s infinite;
-}
 
 /* ALTERNATING ORBITS */
 
@@ -54,7 +38,7 @@
   align-items: center;
   border-radius: 50%;
   background: rgb(63,249,220);
-  background: linear-gradient(0deg, rgba(63,249,220,0.1) 33%, rgba(63,249,220,1) 100%);
+  background: linear-gradient(0deg, #303030 43%, rgba(63,249,220,1) 100%);
   animation: spin .8s linear 0s infinite;
 }
 

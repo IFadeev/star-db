@@ -4,6 +4,14 @@ import './item-list.css';
 
 export default class ItemList extends Component {
 
+  constructor(){
+    super()
+
+    this.state = {
+      peopleList: null,
+    }
+  }
+
   render() {
     return (
       <ul className="item-list list-group">

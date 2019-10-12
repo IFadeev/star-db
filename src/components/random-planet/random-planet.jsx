@@ -12,23 +12,38 @@ export default class RandomPlanet extends Component {
     this.swapiService = new SwapiService();
 
     this.state = {
-      planet: {}
+      planet: {},
+      loading: true
     }
 
     this.onPlanetLoaded = planet => {
-      this.setState({planet});
+      this.setState({
+        planet,
+        loading: false
+      });
     }
 
     this.updatePlanet = () => {
       const id = Math.floor(Math.random()*22)+2;
       this.swapiService.getPlanet(id).then(this.onPlanetLoaded)
     }
+
+  }
+
+  componentDidMount() {
     this.updatePlanet();
+    this.interval = setInterval(this.updatePlanet, 10000);
   }
 
   render() {
     
-    const { planet: {id, name, population, rotationPeriod, diameter} } = this.state;
+    const { planet: {id, name, population, rotationPeriod, diameter}, 
+            loading } = this.state;
+
+    if (loading) {
+      return <div className="random-planet jumbotron rounded"><Spinner/></div>
+    }
+
      return (
       <div className="random-planet jumbotron rounded">
         <img className="planet-image"

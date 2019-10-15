@@ -4,6 +4,7 @@ import Header from '../header';
 import RandomPlanet from '../random-planet';
 import ItemList from '../item-list';
 import PersonDetails from '../person-details';
+import ErrorButton from '../error-btn'
 
 import './app.css';
 
@@ -26,8 +27,8 @@ export default class App extends Component {
       <div>
         <Header />
         <RandomPlanet />
-  
-        <div className="row mb2">
+        <div className="row mb2 button-row"> <ErrorButton/></div>
+        <div className="row mb2">       
           <div className="col-md-6">
             <ItemList OnItemSelected = {this.OnItemSelected} />
           </div>

@@ -35,7 +35,7 @@ export default class ItemList extends Component {
   render() {
 
     const {peopleList} = this.state
-    
+
     if (!peopleList) {
       return (
         <ul className="jumbotron item-list list-group">

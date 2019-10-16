@@ -7,13 +7,15 @@ import PersonDetails from '../person-details';
 import ErrorButton from '../error-btn'
 
 import './app.css';
+import ErrorIndicator from '../error-indicator/error-indicator';
 
 export default class App extends Component {
   constructor() {
     super();
 
     this.state = {
-      selectedPerson: 5
+      selectedPerson: 5,
+      error: false
     }
 
     this.OnItemSelected = id => {
@@ -22,7 +24,16 @@ export default class App extends Component {
       })
     }
   }
+
+  componentDidCatch(){
+    this.setState( {error:true} )
+  }
+
   render() {
+    if (this.state.error) {
+      return <ErrorIndicator/>
+    }
+
     return (
       <div>
         <Header />

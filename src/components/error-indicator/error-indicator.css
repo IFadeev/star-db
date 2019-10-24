@@ -1,6 +1,7 @@
 .error-indicator {
   width: 100%;
   display: flex;
+  margin: 25px;
   flex-direction: column;
   justify-content: center;
   align-items: center;

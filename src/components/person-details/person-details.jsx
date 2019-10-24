@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import './person-details.css';
 import SwapiService from '../../services/swapi-services';
+import ErrorButton from '../error-btn';
+import ErrorIndicator from '../error-indicator/error-indicator';
 
 export default class PersonDetails extends Component {
 
@@ -39,6 +41,7 @@ export default class PersonDetails extends Component {
   }
 
   render() {
+  
     if (!this.state.person) {
       return <span>Select a person from a list</span>
     }
@@ -65,6 +68,7 @@ export default class PersonDetails extends Component {
               <span>{eyeColor}</span>
             </li>
           </ul>
+          <div className="button"><ErrorButton/></div>
         </div>
       </div>
     )
